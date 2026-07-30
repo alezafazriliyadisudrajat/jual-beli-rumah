@@ -5,9 +5,9 @@
         <div class="p-4 border-b border-slate-200 dark:border-zinc-800 bg-slate-50 dark:bg-zinc-950">
             <h3 class="font-bold text-sm">Percakapan Aktif</h3>
         </div>
-        <div class="overflow-y-auto flex-grow divide-y divide-slate-100 dark:divide-zinc-850">
+        <div class="overflow-y-auto flex-grow divide-y divide-slate-100 dark:divide-zinc-800">
             <template x-for="conv in conversations" :key="conv.id">
-                <button @click="selectConversation(conv.id)" :class="activeChatId === conv.id ? 'bg-indigo-50 dark:bg-indigo-950/20' : 'hover:bg-slate-50 dark:hover:bg-zinc-850/50'" class="w-full text-left p-4 transition-colors flex items-center gap-3">
+                <button @click="selectConversation(conv.id)" :class="activeChatId === conv.id ? 'bg-indigo-50 dark:bg-indigo-950/20' : 'hover:bg-slate-50 dark:hover:bg-zinc-800/50'" class="w-full text-left p-4 transition-colors flex items-center gap-3">
                     <div class="w-10 h-10 rounded-full bg-slate-200 dark:bg-zinc-800 flex items-center justify-center font-bold text-xs uppercase text-slate-600 dark:text-slate-350">
                         <span x-text="getChatPartnerName(conv).substring(0, 2)"></span>
                     </div>
@@ -67,7 +67,7 @@
                 <!-- Send Input Area -->
                 <div x-data="{ chatImageSelected: '' }" class="border-t border-slate-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 flex flex-col">
                     <!-- File Upload Preview Chip -->
-                    <div x-show="chatImageSelected" class="px-4 py-2 bg-slate-50 dark:bg-zinc-950 border-b border-slate-100 dark:border-zinc-850 flex items-center justify-between text-[11px] text-slate-500">
+                    <div x-show="chatImageSelected" class="px-4 py-2 bg-slate-50 dark:bg-zinc-950 border-b border-slate-100 dark:border-zinc-800 flex items-center justify-between text-[11px] text-slate-500">
                         <span class="flex items-center gap-1.5 font-bold text-indigo-600 dark:text-indigo-400">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
                             Gambar Terpilih: <span x-text="chatImageSelected" class="truncate max-w-[250px]"></span>

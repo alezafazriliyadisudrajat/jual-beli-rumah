@@ -48,7 +48,7 @@ class TransactionService
     /**
      * Memperbarui status transaksi (negosiasi, booking, menunggu pelunasan, lunas, batal).
      */
-    public function updateStatus(Transaction $transaction, string $status, int $userId)
+    public function updateStatus(Transaction $transaction, string $status, int $userId, array $data = [])
     {
         DB::beginTransaction();
         try {
@@ -56,7 +56,11 @@ class TransactionService
                 throw new \Exception("Status transaksi tidak valid.");
             }
 
-            $transaction->update(['status' => $status]);
+            $updateData = ['status' => $status];
+            if ($status === 'menunggu_pelunasan' && array_key_exists('monthly_installment', $data)) {
+                $updateData['monthly_installment'] = $data['monthly_installment'];
+            }
+            $transaction->update($updateData);
 
             # Jika status adalah booking (artinya pemilik menyetujui penawaran dan pembeli membayar booking fee)
             if ($status === 'booking') {

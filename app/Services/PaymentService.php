@@ -81,10 +81,19 @@ class PaymentService
                         $payable->update(['status' => 'booking']);
                         AuditLogService::log($payable->buyer_id, 'PAYMENT_SUCCESS', "Pembayaran booking fee transaksi ID {$payable->id} berhasil diverifikasi.");
                     } elseif ($payable->status === 'menunggu_pelunasan') {
-                        # terbayar lunas harga penuh
-                        $payable->update(['status' => 'lunas']);
-                        $payable->property->update(['status' => 'sold']);
-                        AuditLogService::log($payable->buyer_id, 'PAYMENT_SUCCESS', "Pembayaran pelunasan transaksi ID {$payable->id} berhasil diverifikasi.");
+                        # jumlahkan semua pembayaran sukses termasuk yang sekarang
+                        $totalPaid = $payable->payments()->where('status', 'success')->sum('amount');
+                        
+                        if ($totalPaid >= ($payable->agreed_price - 0.01)) {
+                            # terbayar lunas harga penuh
+                            $payable->update(['status' => 'lunas']);
+                            $payable->property->update(['status' => 'sold']);
+                            AuditLogService::log($payable->buyer_id, 'PAYMENT_SUCCESS', "Pembayaran pelunasan transaksi ID {$payable->id} berhasil diverifikasi. Transaksi lunas.");
+                        } else {
+                            # terbayar sebagian / cicilan
+                            $remaining = $payable->agreed_price - $totalPaid;
+                            AuditLogService::log($payable->buyer_id, 'PAYMENT_SUCCESS', "Pembayaran cicilan Rp" . number_format($payment->amount, 0, ',', '.') . " untuk transaksi ID {$payable->id} berhasil diverifikasi. Sisa tagihan: Rp" . number_format($remaining, 0, ',', '.'));
+                        }
                     }
                 }
             }

@@ -6,73 +6,87 @@
     <style>
         body {
             font-family: 'Times New Roman', Times, serif;
-            margin: 40px;
+            margin: 15px 30px;
             color: #000;
-            line-height: 1.6;
-            font-size: 14px;
+            line-height: 1.35;
+            font-size: 12px;
         }
         .header {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 12px;
         }
         .header h1 {
-            font-size: 18px;
+            font-size: 15px;
             text-decoration: underline;
             margin: 0;
             font-weight: bold;
         }
         .header p {
-            margin: 5px 0 0 0;
-            font-size: 12px;
+            margin: 2px 0 0 0;
+            font-size: 11px;
         }
         .section-title {
             font-weight: bold;
-            margin-top: 20px;
-            margin-bottom: 5px;
+            margin-top: 10px;
+            margin-bottom: 2px;
             text-decoration: underline;
+            font-size: 12px;
         }
         table {
             width: 100%;
             border-collapse: collapse;
-            margin: 15px 0;
+            margin: 6px 0;
         }
         table, th, td {
             border: 1px solid black;
         }
         th, td {
-            padding: 8px 12px;
+            padding: 4px 8px;
             text-align: left;
         }
         .text-center {
             text-align: center;
         }
         .signatures {
-            margin-top: 50px;
+            margin-top: 20px;
             width: 100%;
+            page-break-inside: avoid;
         }
         .signatures td {
             border: none;
             width: 50%;
             text-align: center;
-            padding-top: 80px;
+            padding-top: 45px;
         }
         .no-border {
             border: none;
         }
         .no-border td {
             border: none;
-            padding: 4px 0;
+            padding: 2px 0;
+        }
+        ol, ul {
+            margin-top: 2px;
+            margin-bottom: 2px;
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 2px;
+        }
+        p {
+            margin-top: 6px;
+            margin-bottom: 6px;
         }
         .print-btn-container {
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             text-align: right;
         }
         .print-btn {
             background-color: #4f46e5;
             color: white;
             border: none;
-            padding: 8px 16px;
-            font-size: 12px;
+            padding: 6px 12px;
+            font-size: 11px;
             border-radius: 6px;
             cursor: pointer;
             font-weight: bold;
@@ -82,7 +96,7 @@
                 display: none;
             }
             body {
-                margin: 20px;
+                margin: 10px 20px;
             }
         }
     </style>

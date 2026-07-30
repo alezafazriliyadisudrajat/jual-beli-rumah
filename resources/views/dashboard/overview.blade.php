@@ -46,7 +46,7 @@
             <div class="p-6 bg-indigo-50/50 dark:bg-indigo-950/20 border border-indigo-100 dark:border-indigo-900/30 rounded-2xl shadow-sm flex items-center justify-between">
                 <div>
                     <span class="block text-xs font-semibold text-indigo-400 uppercase tracking-wider mb-1">Estimasi Komisi Platform</span>
-                    <span class="font-extrabold text-indigo-650 dark:text-indigo-400 text-2xl">Rp {{ number_format($stats['total_commission'], 0, ',', '.') }}</span>
+                    <span class="font-extrabold text-indigo-600 dark:text-indigo-400 text-2xl">Rp {{ number_format($stats['total_commission'], 0, ',', '.') }}</span>
                 </div>
                 <div class="w-12 h-12 rounded-xl bg-indigo-100 dark:bg-indigo-900/40 flex items-center justify-center text-indigo-700 dark:text-indigo-300 shadow-inner">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
@@ -92,7 +92,7 @@
             <div class="p-6 bg-indigo-50/50 dark:bg-indigo-950/20 border border-indigo-100 dark:border-indigo-900/30 rounded-2xl shadow-sm flex items-center justify-between">
                 <div>
                     <span class="block text-xs font-semibold text-indigo-400 uppercase tracking-wider mb-1">Total Pendapatan</span>
-                    <span class="font-extrabold text-indigo-650 dark:text-indigo-400 text-2xl">Rp {{ number_format($stats['total_revenue'], 0, ',', '.') }}</span>
+                    <span class="font-extrabold text-indigo-600 dark:text-indigo-400 text-2xl">Rp {{ number_format($stats['total_revenue'], 0, ',', '.') }}</span>
                 </div>
                 <div class="w-12 h-12 rounded-xl bg-indigo-100 dark:bg-indigo-900/40 flex items-center justify-center text-indigo-700 dark:text-indigo-300 shadow-inner">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
@@ -138,9 +138,9 @@
             <div class="p-6 bg-indigo-50/50 dark:bg-indigo-950/20 border border-indigo-100 dark:border-indigo-900/30 rounded-2xl shadow-sm flex items-center justify-between">
                 <div>
                     <span class="block text-xs font-semibold text-indigo-400 uppercase tracking-wider mb-1">Total Pengeluaran</span>
-                    <span class="font-extrabold text-indigo-650 dark:text-indigo-400 text-2xl">Rp {{ number_format($stats['total_spent'], 0, ',', '.') }}</span>
+                    <span class="font-extrabold text-indigo-600 dark:text-indigo-400 text-2xl">Rp {{ number_format($stats['total_spent'], 0, ',', '.') }}</span>
                 </div>
-                <div class="w-12 h-12 rounded-xl bg-indigo-100 dark:bg-indigo-900/40 flex items-center justify-center text-indigo-700 dark:text-indigo-305 shadow-inner">
+                <div class="w-12 h-12 rounded-xl bg-indigo-100 dark:bg-indigo-900/40 flex items-center justify-center text-indigo-700 dark:text-indigo-300 shadow-inner">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
                     </svg>
@@ -163,7 +163,7 @@
         <div class="relative w-full h-80" style="min-height: 320px;">
             <!-- Loading Spinner/Skeleton Overlay -->
             <div x-show="chartLoading" class="absolute inset-0 flex flex-col items-center justify-center bg-white/80 dark:bg-zinc-900/80 z-10 rounded-xl transition-opacity duration-350">
-                <div class="w-10 h-10 border-4 border-slate-200 border-t-indigo-650 rounded-full animate-spin"></div>
+                <div class="w-10 h-10 border-4 border-slate-200 border-t-indigo-600 rounded-full animate-spin"></div>
                 <span class="text-xs font-semibold text-slate-500 dark:text-slate-400 mt-3 animate-pulse">Menghitung dan memuat data grafik...</span>
             </div>
 

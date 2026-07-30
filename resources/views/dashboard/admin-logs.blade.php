@@ -17,7 +17,7 @@
                         <th class="px-4 py-3">IP / Device</th>
                     </tr>
                 </thead>
-                <tbody class="divide-y divide-slate-100 dark:divide-zinc-850">
+                <tbody class="divide-y divide-slate-100 dark:divide-zinc-800">
                     @forelse($auditLogs as $lg)
                         <tr>
                             <td class="px-4 py-3 text-xs">{{ $lg->created_at->format('d M Y H:i') }}</td>

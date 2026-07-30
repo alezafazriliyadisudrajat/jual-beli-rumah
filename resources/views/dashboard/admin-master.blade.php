@@ -11,7 +11,7 @@
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <!-- panel kiri: Kategori Properti -->
             <div class="bg-white dark:bg-zinc-900 border border-slate-200/80 dark:border-zinc-800 rounded-2xl p-6 md:p-8 shadow-sm space-y-6">
-                <div class="pb-4 border-b border-slate-100 dark:border-zinc-850">
+                <div class="pb-4 border-b border-slate-100 dark:border-zinc-800">
                     <h3 class="heading-font font-bold text-lg text-slate-800 dark:text-slate-200">Kategori Properti</h3>
                     <p class="text-xs text-slate-400 mt-0.5">Tambah dan hapus kategori tipe bangunan</p>
                 </div>
@@ -23,7 +23,7 @@
                         <label class="block text-xs font-semibold text-slate-400 uppercase mb-1">Nama Kategori Baru</label>
                         <div class="flex gap-2">
                             <input type="text" name="name" required placeholder="Contoh: Villa, Kost, Kavling"
-                                class="flex-grow px-3.5 py-2.5 rounded-xl border border-slate-300 dark:border-zinc-850 bg-slate-50 dark:bg-zinc-950 text-xs focus:ring-2 focus:ring-indigo-500/20 outline-none">
+                                class="flex-grow px-3.5 py-2.5 rounded-xl border border-slate-300 dark:border-zinc-800 bg-slate-50 dark:bg-zinc-950 text-xs focus:ring-2 focus:ring-indigo-500/20 outline-none">
                             <button type="submit" class="py-2.5 px-4 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-xl text-xs active:scale-95 transition-all">
                                 Tambah
                             </button>
@@ -40,7 +40,7 @@
                                 <th class="px-4 py-3 text-right">Aksi</th>
                             </tr>
                         </thead>
-                        <tbody class="divide-y divide-slate-100 dark:divide-zinc-850">
+                        <tbody class="divide-y divide-slate-100 dark:divide-zinc-800">
                             @forelse($categories as $cat)
                                 <tr>
                                     <td class="px-4 py-3 font-semibold text-slate-800 dark:text-slate-200 text-xs">{{ $cat->name }}</td>
@@ -77,7 +77,7 @@
 
             <!-- panel kanan: Wilayah / Lokasi -->
             <div class="bg-white dark:bg-zinc-900 border border-slate-200/80 dark:border-zinc-800 rounded-2xl p-6 md:p-8 shadow-sm space-y-6">
-                <div class="pb-4 border-b border-slate-100 dark:border-zinc-850">
+                <div class="pb-4 border-b border-slate-100 dark:border-zinc-800">
                     <h3 class="heading-font font-bold text-lg text-slate-800 dark:text-slate-200">Wilayah / Lokasi</h3>
                     <p class="text-xs text-slate-400 mt-0.5">Tambah dan hapus wilayah administratif properti</p>
                 </div>
@@ -89,11 +89,11 @@
                         <div>
                             <label class="block text-xs font-semibold text-slate-400 uppercase mb-1">Nama Wilayah</label>
                             <input type="text" name="name" required placeholder="Contoh: Depok, Sumedang"
-                                class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 dark:border-zinc-850 bg-slate-50 dark:bg-zinc-950 text-xs focus:ring-2 focus:ring-indigo-500/20 outline-none">
+                                class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 dark:border-zinc-800 bg-slate-50 dark:bg-zinc-950 text-xs focus:ring-2 focus:ring-indigo-500/20 outline-none">
                         </div>
                         <div>
                             <label class="block text-xs font-semibold text-slate-400 uppercase mb-1">Tipe Wilayah</label>
-                            <select name="type" required class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 dark:border-zinc-850 bg-slate-50 dark:bg-zinc-950 text-xs outline-none">
+                            <select name="type" required class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 dark:border-zinc-800 bg-slate-50 dark:bg-zinc-950 text-xs outline-none">
                                 <option value="provinsi">Provinsi</option>
                                 <option value="kota">Kota / Kabupaten</option>
                                 <option value="kecamatan">Kecamatan</option>
@@ -102,7 +102,7 @@
                     </div>
                     <div>
                         <label class="block text-xs font-semibold text-slate-400 uppercase mb-1">Wilayah Induk (Parent) - Opsional</label>
-                        <select name="parent_id" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 dark:border-zinc-850 bg-slate-50 dark:bg-zinc-950 text-xs outline-none">
+                        <select name="parent_id" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 dark:border-zinc-800 bg-slate-50 dark:bg-zinc-950 text-xs outline-none">
                             <option value="">-- Tanpa Induk Wilayah --</option>
                             @foreach($locations as $loc)
                                 <option value="{{ $loc->id }}">{{ $loc->name }} ({{ ucfirst($loc->type) }})</option>
@@ -127,7 +127,7 @@
                                 <th class="px-4 py-3 text-right">Aksi</th>
                             </tr>
                         </thead>
-                        <tbody class="divide-y divide-slate-100 dark:divide-zinc-850">
+                        <tbody class="divide-y divide-slate-100 dark:divide-zinc-800">
                             @forelse($locations as $loc)
                                 <tr>
                                     <td class="px-4 py-3 font-semibold text-slate-800 dark:text-slate-200 text-xs">{{ $loc->name }}</td>

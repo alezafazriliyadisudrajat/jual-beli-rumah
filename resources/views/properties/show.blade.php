@@ -14,7 +14,7 @@
             <span class="text-slate-800 dark:text-slate-200 truncate max-w-[200px]">{{ $property->title }}</span>
         </nav>
         
-        <a href="{{ url()->previous() == url()->current() ? url('/') : url()->previous() }}" class="inline-flex items-center gap-2 text-sm font-semibold text-slate-650 hover:text-indigo-650 dark:text-slate-300 dark:hover:text-indigo-400 transition-colors">
+        <a href="{{ url()->previous() == url()->current() ? url('/') : url()->previous() }}" class="inline-flex items-center gap-2 text-sm font-semibold text-slate-600 hover:text-indigo-600 dark:text-slate-300 dark:hover:text-indigo-400 transition-colors">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-4 h-4">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
             </svg>
@@ -49,7 +49,7 @@
                     {{ $property->title }}
                 </h1>
                 
-                <div class="flex flex-wrap items-center gap-4 mt-3 text-sm text-slate-500 dark:text-slate-400 font-medium border-t border-slate-100 dark:border-zinc-850 pt-3">
+                <div class="flex flex-wrap items-center gap-4 mt-3 text-sm text-slate-500 dark:text-slate-400 font-medium border-t border-slate-100 dark:border-zinc-800 pt-3">
                     <span class="flex items-center gap-1.5">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 text-indigo-500">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -76,7 +76,7 @@
                     <div class="flex gap-3 mt-4 overflow-x-auto pb-2 snap-x">
                         @foreach($property->images as $img)
                             <button onclick="document.getElementById('main-image').src = '{{ asset($img->image_path) }}'" 
-                                    class="w-24 h-16 rounded-lg overflow-hidden flex-shrink-0 border-2 border-transparent hover:border-indigo-500 focus:border-indigo-650 transition-all snap-start">
+                                    class="w-24 h-16 rounded-lg overflow-hidden flex-shrink-0 border-2 border-transparent hover:border-indigo-500 focus:border-indigo-600 transition-all snap-start">
                                 <img src="{{ asset($img->image_path) }}" class="object-cover w-full h-full">
                             </button>
                         @endforeach
@@ -151,36 +151,36 @@
                 </div>
 
                 <!-- Secondary specs list -->
-                <div class="mt-8 pt-6 border-t border-slate-100 dark:border-zinc-850 grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
-                    <div class="flex justify-between py-1 border-b border-slate-50 dark:border-zinc-850">
+                <div class="mt-8 pt-6 border-t border-slate-100 dark:border-zinc-800 grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+                    <div class="flex justify-between py-1 border-b border-slate-50 dark:border-zinc-800">
                         <span class="text-slate-400 font-semibold uppercase tracking-wider">Kondisi Bangunan</span>
                         <span class="font-bold text-slate-800 dark:text-slate-200 uppercase">{{ $property->condition ?? 'baru' }}</span>
                     </div>
-                    <div class="flex justify-between py-1 border-b border-slate-50 dark:border-zinc-850">
+                    <div class="flex justify-between py-1 border-b border-slate-50 dark:border-zinc-800">
                         <span class="text-slate-400 font-semibold uppercase tracking-wider">Arah Hadap</span>
                         <span class="font-bold text-slate-800 dark:text-slate-200 uppercase">{{ $property->facing ?? 'timur' }}</span>
                     </div>
-                    <div class="flex justify-between py-1 border-b border-slate-50 dark:border-zinc-850">
+                    <div class="flex justify-between py-1 border-b border-slate-50 dark:border-zinc-800">
                         <span class="text-slate-400 font-semibold uppercase tracking-wider">Interior</span>
                         <span class="font-bold text-slate-800 dark:text-slate-200 uppercase">{{ $property->interior_type ?? 'tak berperabot' }}</span>
                     </div>
-                    <div class="flex justify-between py-1 border-b border-slate-50 dark:border-zinc-850">
+                    <div class="flex justify-between py-1 border-b border-slate-50 dark:border-zinc-800">
                         <span class="text-slate-400 font-semibold uppercase tracking-wider">Jumlah Lantai</span>
                         <span class="font-bold text-slate-800 dark:text-slate-200">{{ $property->floors_count ?? '1' }}</span>
                     </div>
-                    <div class="flex justify-between py-1 border-b border-slate-50 dark:border-zinc-850">
+                    <div class="flex justify-between py-1 border-b border-slate-50 dark:border-zinc-800">
                         <span class="text-slate-400 font-semibold uppercase tracking-wider">Garasi / Carport</span>
                         <span class="font-bold text-slate-800 dark:text-slate-200">{{ $property->garages_count ?? 0 }} / {{ $property->carports_count ?? 0 }}</span>
                     </div>
-                    <div class="flex justify-between py-1 border-b border-slate-50 dark:border-zinc-850">
+                    <div class="flex justify-between py-1 border-b border-slate-50 dark:border-zinc-800">
                         <span class="text-slate-400 font-semibold uppercase tracking-wider">Akses Jalan</span>
                         <span class="font-bold text-slate-800 dark:text-slate-200 uppercase">{{ $property->road_access ?? 'Dua Mobil' }}</span>
                     </div>
-                    <div class="flex justify-between py-1 border-b border-slate-50 dark:border-zinc-850">
+                    <div class="flex justify-between py-1 border-b border-slate-50 dark:border-zinc-800">
                         <span class="text-slate-400 font-semibold uppercase tracking-wider">Pasokan Air PAM</span>
                         <span class="font-bold text-slate-800 dark:text-slate-200">{{ $property->has_pam_water ? 'Tersedia' : 'Tidak Ada' }}</span>
                     </div>
-                    <div class="flex justify-between py-1 border-b border-slate-50 dark:border-zinc-850">
+                    <div class="flex justify-between py-1 border-b border-slate-50 dark:border-zinc-800">
                         <span class="text-slate-400 font-semibold uppercase tracking-wider">Pasokan Air Tanah</span>
                         <span class="font-bold text-slate-800 dark:text-slate-200">{{ $property->has_ground_water ? 'Tersedia' : 'Tidak Ada' }}</span>
                     </div>
@@ -190,7 +190,7 @@
             <!-- Description -->
             <div class="bg-white dark:bg-zinc-900 border border-slate-200/80 dark:border-zinc-800 rounded-2xl p-6 shadow-sm">
                 <h3 class="heading-font font-bold text-lg text-slate-900 dark:text-white mb-4">Deskripsi Lengkap</h3>
-                <div class="text-sm text-slate-650 dark:text-slate-355 leading-relaxed whitespace-pre-line">
+                <div class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed whitespace-pre-line">
                     {{ $property->description }}
                 </div>
             </div>
@@ -223,8 +223,11 @@
                                 <label class="block text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase mb-1">
                                     Harga Properti (Rp) <span class="text-[10px] text-slate-400 lowercase italic font-normal">(hanya untuk simulasi hitungan)</span>
                                 </label>
-                                <input type="number" id="kpr_price" value="{{ (int)$property->price }}" 
-                                       class="w-full px-3 py-2.5 rounded-lg border border-slate-200 dark:border-zinc-800 bg-slate-50 dark:bg-zinc-950 text-sm font-semibold focus:ring-2 focus:ring-indigo-500/20 outline-none">
+                                <input type="hidden" id="kpr_price" value="{{ (int)$property->price }}">
+                                <input type="text" id="formatted_kpr_price" 
+                                       value="{{ number_format($property->price, 0, ',', '.') }}" 
+                                       class="w-full px-3 py-2.5 rounded-lg border border-slate-200 dark:border-zinc-800 bg-slate-50 dark:bg-zinc-950 text-sm font-semibold focus:ring-2 focus:ring-indigo-500/20 outline-none"
+                                       oninput="formatRupiah(this, 'kpr_price'); calculateKPR();">
                             </div>
                             
                             <div class="grid grid-cols-2 gap-4">
@@ -267,7 +270,7 @@
                             </div>
                             
                             <div class="border-t border-slate-200/60 dark:border-zinc-700 pt-4">
-                                <span class="text-xs text-indigo-650 dark:text-indigo-400 block uppercase tracking-wider font-bold">Angsuran Per Bulan</span>
+                                <span class="text-xs text-indigo-600 dark:text-indigo-400 block uppercase tracking-wider font-bold">Angsuran Per Bulan</span>
                                 <span id="kpr_installment" class="text-2xl font-extrabold text-indigo-700 dark:text-indigo-300">Rp 0</span>
                             </div>
                         </div>
@@ -290,7 +293,7 @@
                 @else
                     <div class="space-y-6">
                         @foreach($property->reviews as $review)
-                            <div class="border-b border-slate-100 dark:border-zinc-855 last:border-0 pb-6 last:pb-0">
+                            <div class="border-b border-slate-100 dark:border-zinc-800 last:border-0 pb-6 last:pb-0">
                                 <div class="flex items-center justify-between gap-2 mb-2">
                                     <div class="flex items-center gap-3">
                                         <div class="w-10 h-10 rounded-full bg-indigo-100 dark:bg-zinc-800 flex items-center justify-center font-bold text-sm uppercase text-indigo-700 dark:text-indigo-400">
@@ -429,8 +432,11 @@
                                                 <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
                                                     <span class="text-slate-450 text-xs">Rp</span>
                                                 </div>
-                                                <input type="number" name="agreed_price" value="{{ (int)$property->price }}" required min="0"
-                                                       class="w-full pl-9 pr-3 py-2.5 rounded-lg border border-slate-200 dark:border-zinc-800 bg-slate-50 dark:bg-zinc-950 text-sm focus:ring-2 focus:ring-indigo-500/20 outline-none font-semibold">
+                                                <input type="hidden" name="agreed_price" id="raw_agreed_price" value="{{ (int)$property->price }}">
+                                                <input type="text" id="formatted_agreed_price" required
+                                                       value="{{ number_format($property->price, 0, ',', '.') }}"
+                                                       class="w-full pl-9 pr-3 py-2.5 rounded-lg border border-slate-200 dark:border-zinc-800 bg-slate-50 dark:bg-zinc-950 text-sm focus:ring-2 focus:ring-indigo-500/20 outline-none font-semibold"
+                                                       oninput="formatRupiah(this, 'raw_agreed_price')">
                                             </div>
                                         </div>
                                         
@@ -441,7 +447,7 @@
                                     </form>
                                 @else
                                     <!-- Sewa Section -->
-                                    <h4 class="text-xs font-bold text-slate-700 dark:text-slate-355 uppercase mb-3">Ajukan Permintaan Sewa</h4>
+                                    <h4 class="text-xs font-bold text-slate-700 dark:text-slate-400 uppercase mb-3">Ajukan Permintaan Sewa</h4>
                                     <form action="{{ route('bookings.store') }}" method="POST" class="space-y-3">
                                         @csrf
                                         <input type="hidden" name="property_id" value="{{ $property->id }}">
@@ -475,12 +481,12 @@
                                                 <span id="rent-calc-deposit" class="font-bold text-slate-800 dark:text-slate-200">-</span>
                                             </div>
                                             <div class="flex justify-between border-t border-slate-200/60 dark:border-zinc-700 pt-2 font-bold text-sm">
-                                                <span class="text-indigo-650 dark:text-indigo-400">Total Pembayaran:</span>
-                                                <span id="rent-calc-total" class="text-indigo-750 dark:text-indigo-300">-</span>
+                                                <span class="text-indigo-600 dark:text-indigo-400">Total Pembayaran:</span>
+                                                <span id="rent-calc-total" class="text-indigo-700 dark:text-indigo-300">-</span>
                                             </div>
                                         </div>
                                         
-                                        <button type="submit" class="w-full py-3 bg-indigo-650 hover:bg-indigo-600 text-white font-bold rounded-xl shadow-md transition-all active:scale-95 text-center flex items-center justify-center gap-2 text-sm">
+                                        <button type="submit" class="w-full py-3 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-xl shadow-md transition-all active:scale-95 text-center flex items-center justify-center gap-2 text-sm">
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"/></svg>
                                             Ajukan Sewa Properti
                                         </button>
@@ -512,7 +518,7 @@
                 <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-4">Diposting Oleh</h4>
                 
                 <div class="flex items-center gap-3">
-                    <div class="w-12 h-12 rounded-full bg-indigo-100 dark:bg-zinc-800 flex items-center justify-center font-bold text-sm uppercase text-indigo-750 dark:text-indigo-400">
+                    <div class="w-12 h-12 rounded-full bg-indigo-100 dark:bg-zinc-800 flex items-center justify-center font-bold text-sm uppercase text-indigo-700 dark:text-indigo-400">
                         {{ substr($property->user->name, 0, 2) }}
                     </div>
                     <div>
@@ -524,7 +530,7 @@
                                 </svg>
                             @endif
                         </h4>
-                        <p class="text-[10px] font-semibold text-indigo-650 dark:text-indigo-400 uppercase tracking-wider mt-0.5">{{ $property->user->role->name }}</p>
+                        <p class="text-[10px] font-semibold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider mt-0.5">{{ $property->user->role->name }}</p>
                     </div>
                 </div>
             </div>

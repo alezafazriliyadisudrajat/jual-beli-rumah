@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 
-#[Fillable(['property_id', 'buyer_id', 'agreed_price', 'booking_fee', 'status', 'contract_id'])]
+#[Fillable(['property_id', 'buyer_id', 'agreed_price', 'booking_fee', 'status', 'contract_id', 'monthly_installment'])]
 class Transaction extends Model
 {
     public function property()

@@ -63,13 +63,14 @@ class TransactionController extends Controller
 
             $validator = Validator::make($request->all(), [
                 'status' => 'required|in:negosiasi,booking,menunggu_pelunasan,lunas,batal',
+                'monthly_installment' => 'nullable|numeric|min:0',
             ]);
 
             if ($validator->fails()) {
                 return response()->json(['success' => false, 'message' => $validator->errors()->first()], 422);
             }
 
-            $updatedTransaction = $this->transactionService->updateStatus($transaction, $request->status, $user->id);
+            $updatedTransaction = $this->transactionService->updateStatus($transaction, $request->status, $user->id, $request->all());
 
             return response()->json([
                 'success' => true,

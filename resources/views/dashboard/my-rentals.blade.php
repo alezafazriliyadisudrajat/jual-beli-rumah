@@ -17,7 +17,7 @@
                         <th class="px-4 py-3">Aksi</th>
                     </tr>
                 </thead>
-                <tbody class="divide-y divide-slate-100 dark:divide-zinc-850">
+                <tbody class="divide-y divide-slate-100 dark:divide-zinc-800">
                     @forelse($buyerBookings as $book)
                         <tr>
                             <td class="px-4 py-3">
@@ -29,7 +29,7 @@
                                 {{ $book->start_date->format('d M Y') }} s/d {{ $book->end_date->format('d M Y') }}
                             </td>
                             <td class="px-4 py-3 text-xs">
-                                <div class="font-bold text-indigo-650 dark:text-indigo-400">
+                                <div class="font-bold text-indigo-600 dark:text-indigo-400">
                                     Rp {{ number_format($book->property->price, 0, ',', '.') }} / bulan
                                 </div>
                                 <div class="text-[10px] text-slate-500 mt-0.5">
@@ -45,36 +45,48 @@
                                     {{ $book->status }}
                                 </span>
                             </td>
-                            <td class="px-4 py-3 text-xs flex flex-wrap gap-1.5">
-                                @if($book->status === 'menunggu')
-                                    @php
-                                        $initialPaymentAmount = $book->duration_type === 'bulanan' 
-                                            ? ($book->property->price + $book->deposit) 
-                                            : ($book->property->price * 12 + $book->deposit);
-                                    @endphp
-                                    <button onclick="triggerMockPayment('booking', {{ $book->id }}, {{ $initialPaymentAmount }}, 'Virtual Account')" class="py-1.5 px-3 bg-emerald-600 hover:bg-emerald-500 text-white rounded font-bold shadow active:scale-95 transition-all">
-                                        Bayar Bulan Pertama + Deposit (Mock)
-                                    </button>
-                                @endif
-                                
-                                @if(in_array($book->status, ['disetujui', 'aktif', 'selesai']) && $book->contract_id)
-                                    <a href="{{ route('bookings.contract', $book->id) }}" target="_blank" class="p-1.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg transition-all inline-flex items-center justify-center shadow" title="Unduh Perjanjian Sewa">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-4 h-4">
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
-                                        </svg>
-                                    </a>
+                            <td class="px-4 py-3 text-xs flex items-center gap-3">
+                                <!-- Main Actions -->
+                                <div class="flex flex-col gap-1.5">
+                                    @if($book->status === 'menunggu')
+                                        @php
+                                            $initialPaymentAmount = $book->duration_type === 'bulanan' 
+                                                ? ($book->property->price + $book->deposit) 
+                                                : ($book->property->price * 12 + $book->deposit);
+                                        @endphp
+                                        <button onclick="triggerMockPayment('booking', {{ $book->id }}, {{ $initialPaymentAmount }}, 'Virtual Account')" class="py-1.5 px-3 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg font-bold shadow active:scale-95 transition-all text-[10px]">
+                                            Bayar Bulan Pertama + Deposit (Mock)
+                                        </button>
+                                    @endif
+                                </div>
+
+                                <!-- Separator Line if there are documents -->
+                                @if((in_array($book->status, ['disetujui', 'aktif', 'selesai']) && $book->contract_id) || $book->payments()->where('status', 'success')->exists())
+                                    <div class="h-8 w-px bg-slate-200 dark:bg-zinc-850"></div>
                                 @endif
 
-                                @php
-                                    $bookingPayment = $book->payments()->where('status', 'success')->first();
-                                @endphp
-                                @if($bookingPayment)
-                                    <a href="{{ route('payments.invoice', $bookingPayment->id) }}" target="_blank" class="p-1.5 bg-slate-700 hover:bg-slate-600 text-white rounded-lg transition-all inline-flex items-center justify-center shadow" title="Unduh Kuitansi">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-4 h-4">
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.03 0 1.9.793 1.996 1.817M12 6.25c.414 0 .75-.336.75-.75s-.336-.75-.75-.75h-1.5a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75" />
-                                        </svg>
-                                    </a>
-                                @endif
+                                <!-- Document & Receipts -->
+                                <div class="flex items-center gap-1.5">
+                                    @if(in_array($book->status, ['disetujui', 'aktif', 'selesai']) && $book->contract_id)
+                                        <a href="{{ route('bookings.contract', $book->id) }}" target="_blank" class="w-8 h-8 bg-indigo-50 hover:bg-indigo-100 text-indigo-600 dark:bg-indigo-950/30 dark:hover:bg-indigo-900/40 dark:text-indigo-400 rounded-lg transition-all flex items-center justify-center shadow-sm border border-indigo-100 dark:border-indigo-900/30" title="Unduh Perjanjian Sewa">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                                            </svg>
+                                        </a>
+                                    @endif
+
+                                    @php
+                                        $bookingPayment = $book->payments()->where('status', 'success')->first();
+                                    @endphp
+                                    @if($bookingPayment)
+                                        <a href="{{ route('payments.invoice', $bookingPayment->id) }}" target="_blank" class="px-2.5 h-8 bg-slate-50 hover:bg-slate-100 text-slate-700 dark:bg-zinc-800/40 dark:hover:bg-zinc-800/80 dark:text-zinc-300 border border-slate-200/60 dark:border-zinc-750 rounded-lg transition-all flex items-center justify-center gap-1 shadow-sm text-[10px]" title="Unduh Kuitansi">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-3.5 h-3.5">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.03 0 1.9.793 1.996 1.817M12 6.25c.414 0 .75-.336.75-.75s-.336-.75-.75-.75h-1.5a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75" />
+                                            </svg>
+                                            <span class="text-[9px] font-bold">Kuitansi</span>
+                                        </a>
+                                    @endif
+                                </div>
                             </td>
                         </tr>
                     @empty

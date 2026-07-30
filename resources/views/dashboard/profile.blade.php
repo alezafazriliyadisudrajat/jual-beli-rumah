@@ -12,7 +12,7 @@
     </div>
 
     <!-- Profile Photo & Metadata Section -->
-    <div class="flex flex-col sm:flex-row items-center gap-6 p-6 border border-slate-100 dark:border-zinc-850 rounded-2xl bg-slate-50/50 dark:bg-zinc-950/20">
+    <div class="flex flex-col sm:flex-row items-center gap-6 p-6 border border-slate-100 dark:border-zinc-800 rounded-2xl bg-slate-50/50 dark:bg-zinc-950/20">
         <div @if(Auth::user()->avatar) @click="showZoomModal = true; zoomScale = 1.0; zoomImageUrl = '{{ Auth::user()->avatar }}'" class="cursor-pointer group relative w-24 h-24 rounded-full overflow-hidden border-2 border-indigo-500 flex-shrink-0 bg-slate-200 dark:bg-zinc-800 flex items-center justify-center" title="Klik untuk memperbesar" @else class="relative w-24 h-24 rounded-full overflow-hidden border-2 border-indigo-500 flex-shrink-0 bg-slate-200 dark:bg-zinc-800 flex items-center justify-center" @endif>
             @if(Auth::user()->avatar)
                 <img src="{{ Auth::user()->avatar }}" alt="Foto Profil" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
@@ -30,7 +30,7 @@
         <div class="text-center sm:text-left">
             <h3 class="font-bold text-lg text-slate-800 dark:text-slate-200">{{ Auth::user()->name }}</h3>
             <p class="text-xs text-slate-400 mt-0.5">{{ Auth::user()->email }}</p>
-            <span class="inline-block px-2.5 py-0.5 mt-2 rounded-full text-[9px] font-bold bg-indigo-100 text-indigo-850 dark:bg-indigo-900/40 dark:text-indigo-300 uppercase tracking-wider">
+            <span class="inline-block px-2.5 py-0.5 mt-2 rounded-full text-[9px] font-bold bg-indigo-100 text-indigo-800 dark:bg-indigo-900/40 dark:text-indigo-300 uppercase tracking-wider">
                 {{ Auth::user()->role->name }}
             </span>
         </div>
@@ -111,7 +111,7 @@
                 @if(Auth::user()->avatar)
                     <div class="mt-2">
                         <label class="inline-flex items-center gap-2 cursor-pointer">
-                            <input type="checkbox" name="delete_avatar" value="1" class="rounded border-slate-300 dark:border-zinc-800 text-indigo-650 focus:ring-indigo-500 bg-slate-50 dark:bg-zinc-950">
+                            <input type="checkbox" name="delete_avatar" value="1" class="rounded border-slate-300 dark:border-zinc-800 text-indigo-600 focus:ring-indigo-500 bg-slate-50 dark:bg-zinc-950">
                             <span class="text-xs text-rose-500 font-bold">Hapus Foto Profil Saat Ini</span>
                         </label>
                     </div>
@@ -163,7 +163,7 @@
     </div>
 
     <!-- Zoom Controls -->
-    <div class="flex items-center gap-4 mt-6 bg-slate-900/80 border border-slate-850 p-3 rounded-2xl shadow-xl">
+    <div class="flex items-center gap-4 mt-6 bg-slate-900/80 border border-slate-800 p-3 rounded-2xl shadow-xl">
         <button @click="zoomOut()" class="w-10 h-10 flex items-center justify-center rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-lg active:scale-95 transition-all" title="Zoom Out">-</button>
         <span class="text-xs font-bold text-slate-300 w-16 text-center" x-text="Math.round(zoomScale * 100) + '%'">100%</span>
         <button @click="zoomIn()" class="w-10 h-10 flex items-center justify-center rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-lg active:scale-95 transition-all" title="Zoom In">+</button>
